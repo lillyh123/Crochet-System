@@ -14,7 +14,8 @@ public class CrochetSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // nothing is working
+        MainMenu mainmenu = new MainMenu();
+        mainmenu.setVisible(true);
     }
     
 }
