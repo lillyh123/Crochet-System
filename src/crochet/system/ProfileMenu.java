@@ -4,6 +4,10 @@
  */
 package crochet.system;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFrame;
 
 /**
@@ -11,6 +15,13 @@ import javax.swing.JFrame;
  * @author hinks
  */
 public class ProfileMenu extends javax.swing.JFrame {
+    public String username;
+    public String fullname;
+    public String email;
+    public String DOB;
+    public boolean admin;
+    public String address;
+    public String postcode;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ProfileMenu.class.getName());
 
@@ -20,6 +31,36 @@ public class ProfileMenu extends javax.swing.JFrame {
     public ProfileMenu() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        try{
+            FileReader fr = new FileReader("User.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String[] contents = br.readLine().split(",");
+            // contents example: username, first name, last name, email, phone no., dob, address, postcode, country, admin
+            username = contents[0];
+            fullname = contents[1]+" "+contents[2];
+            DOB = contents[5];
+            email = contents[3];
+            admin = Boolean.parseBoolean(contents[9]);
+            address = contents[6];
+            postcode = contents[7];
+            //System.out.println(username+","+fullname+","+DOB+","+admin+","+address+","+postcode);
+            
+            UsernameLabel.setText(username);
+            if(admin){
+                AdminLabel.setText("Admin");
+            }
+            else{
+                AdminLabel.setText("User");
+            }
+            DOBLabel.setText(DOB);
+            FullnameLabel.setText(fullname);
+            AddressLabel.setText(address);
+            PostcodeLabel.setText(postcode);
+            EmailLabel.setText(email);
+        }
+        catch(IOException e){
+            System.out.println("No user file");
+        }
     }
 
     /**
@@ -32,20 +73,229 @@ public class ProfileMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        HeadingButton = new javax.swing.JButton();
+        BasketButton = new javax.swing.JButton();
+        SettingsButton = new javax.swing.JButton();
+        UsernameLabel = new javax.swing.JLabel();
+        AdminLabel = new javax.swing.JLabel();
+        EmailLabel = new javax.swing.JLabel();
+        FullnameLabel = new javax.swing.JLabel();
+        DOBLabel = new javax.swing.JLabel();
+        AddressLabel = new javax.swing.JLabel();
+        PostcodeLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        UsernameLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        AddProjectButton = new javax.swing.JButton();
+        ViewTransactionsButton = new javax.swing.JButton();
+        EditDetailsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        HeadingButton.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
+        HeadingButton.setText("Crochet system name");
+        HeadingButton.setBorder(null);
+        HeadingButton.setContentAreaFilled(false);
+        HeadingButton.setFocusPainted(false);
+        HeadingButton.addActionListener(this::HeadingButtonActionPerformed);
+
+        BasketButton.setBackground(new java.awt.Color(255, 222, 89));
+        BasketButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crochet/system/basketIconBG.png"))); // NOI18N
+        BasketButton.addActionListener(this::BasketButtonActionPerformed);
+
+        SettingsButton.setBackground(new java.awt.Color(217, 217, 217));
+        SettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crochet/system/settingsIconBG (1).png"))); // NOI18N
+        SettingsButton.addActionListener(this::SettingsButtonActionPerformed);
+
+        UsernameLabel.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
+        UsernameLabel.setText("Username");
+
+        AdminLabel.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        AdminLabel.setText("Admin/user");
+
+        EmailLabel.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        EmailLabel.setText("Email");
+
+        FullnameLabel.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        FullnameLabel.setText("Full name");
+
+        DOBLabel.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        DOBLabel.setText("DOB");
+
+        AddressLabel.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        AddressLabel.setText("Address");
+
+        PostcodeLabel.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        PostcodeLabel.setText("Postcode");
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 133, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 126, Short.MAX_VALUE)
+        );
+
+        UsernameLabel1.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
+        UsernameLabel1.setText("Projects");
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 275, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jPanel4);
+
+        AddProjectButton.setBackground(new java.awt.Color(86, 203, 249));
+        AddProjectButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        AddProjectButton.setText("Add Project");
+        AddProjectButton.addActionListener(this::AddProjectButtonActionPerformed);
+
+        ViewTransactionsButton.setBackground(new java.awt.Color(255, 144, 159));
+        ViewTransactionsButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        ViewTransactionsButton.setText("View Transactions");
+        ViewTransactionsButton.addActionListener(this::ViewTransactionsButtonActionPerformed);
+
+        EditDetailsButton.setBackground(new java.awt.Color(129, 244, 225));
+        EditDetailsButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        EditDetailsButton.setText("Edit Details");
+        EditDetailsButton.addActionListener(this::EditDetailsButtonActionPerformed);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(FullnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DOBLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PostcodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(HeadingButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(SettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(UsernameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AddProjectButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ViewTransactionsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EditDetailsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(BasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(HeadingButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(FullnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DOBLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(UsernameLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(AdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PostcodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(11, 11, 11)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(UsernameLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(ViewTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(AddProjectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditDetailsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -56,11 +306,39 @@ public class ProfileMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void HeadingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HeadingButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HeadingButtonActionPerformed
+
+    private void BasketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BasketButtonActionPerformed
+        BasketMenu basketmenu = new BasketMenu();
+        basketmenu.setVisible(true);
+    }//GEN-LAST:event_BasketButtonActionPerformed
+
+    private void SettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsButtonActionPerformed
+        SettingsMenu settingsmenu = new SettingsMenu();
+        settingsmenu.setVisible(true);
+    }//GEN-LAST:event_SettingsButtonActionPerformed
+
+    private void AddProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProjectButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddProjectButtonActionPerformed
+
+    private void ViewTransactionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ViewTransactionsButtonActionPerformed
+
+    private void EditDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditDetailsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditDetailsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +366,25 @@ public class ProfileMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddProjectButton;
+    private javax.swing.JLabel AddressLabel;
+    private javax.swing.JLabel AdminLabel;
+    private javax.swing.JButton BasketButton;
+    private javax.swing.JLabel DOBLabel;
+    private javax.swing.JButton EditDetailsButton;
+    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JLabel FullnameLabel;
+    private javax.swing.JButton HeadingButton;
+    private javax.swing.JLabel PostcodeLabel;
+    private javax.swing.JButton SettingsButton;
+    private javax.swing.JLabel UsernameLabel;
+    private javax.swing.JLabel UsernameLabel1;
+    private javax.swing.JButton ViewTransactionsButton;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
