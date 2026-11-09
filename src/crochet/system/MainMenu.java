@@ -6,6 +6,7 @@ package crochet.system;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +15,9 @@ import java.awt.Font;
 public class MainMenu extends javax.swing.JFrame {
     public int mainbodyfontsize = 15;
     public Font changedfont = new Font("Century Gothic",Font.PLAIN,mainbodyfontsize);
+    
+    //ArrayList<String> labels = new ArrayList<String>();
+    
     /**
      * Creates new form MainMenu
      */
@@ -90,7 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(MainMenuTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(MainMenuSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Main Menu", MainMenuTab);
@@ -119,7 +123,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(CreatePatternsTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(PatternsSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Create Patterns", CreatePatternsTab);
@@ -148,7 +152,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(AdviceTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(AdviceSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Advice", AdviceTab);
@@ -177,7 +181,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(BuySellTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(BuysSellSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Buy/Sell", BuySellTab);
@@ -206,7 +210,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(TutorialsTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(TutorialsSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Tutorials", TutorialsTab);

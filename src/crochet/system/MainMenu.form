@@ -166,7 +166,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="MainMenuSearchBar" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace pref="232" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -218,7 +218,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="PatternsSearchBar" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace pref="232" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -272,7 +272,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="AdviceSearchBar" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace pref="232" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -326,7 +326,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="BuysSellSearchBar" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace pref="232" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -380,7 +380,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="TutorialsSearchBar" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace pref="232" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

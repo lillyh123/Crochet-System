@@ -4,6 +4,7 @@
  */
 package crochet.system;
 
+import java.awt.Color;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -73,7 +74,8 @@ public class SettingsMenu extends javax.swing.JFrame {
         FontsizeSpinner.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         FontsizeSpinner.setModel(new javax.swing.SpinnerNumberModel(20, 15, 40, 1));
 
-        DarkmodeToggle.setText("jToggleButton1");
+        DarkmodeToggle.setText("Light");
+        DarkmodeToggle.addActionListener(this::DarkmodeToggleActionPerformed);
 
         SaveChangesButton.setBackground(new java.awt.Color(129, 244, 225));
         SaveChangesButton.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
@@ -92,21 +94,16 @@ public class SettingsMenu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(FontsizeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 13, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(DarkmodeToggle)))
-                        .addGap(37, 37, 37))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FontsizeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DarkmodeToggle, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(SaveChangesButton)
@@ -166,6 +163,21 @@ public class SettingsMenu extends javax.swing.JFrame {
         }
         }  
     }//GEN-LAST:event_LogoutButtonActionPerformed
+
+    private void DarkmodeToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DarkmodeToggleActionPerformed
+        String current = DarkmodeToggle.getText();
+        if(current.equals("Light")){
+            DarkmodeToggle.setText("Dark");
+            DarkmodeToggle.setBackground(new Color(0,0,0));
+            DarkmodeToggle.setForeground(Color.white);
+        }
+        else{
+            DarkmodeToggle.setText("Light");
+            DarkmodeToggle.setBackground(Color.white);
+            DarkmodeToggle.setForeground(Color.black);
+        }
+
+    }//GEN-LAST:event_DarkmodeToggleActionPerformed
 
     /**
      * @param args the command line arguments
