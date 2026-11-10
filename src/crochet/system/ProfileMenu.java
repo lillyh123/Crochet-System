@@ -15,13 +15,7 @@ import javax.swing.JFrame;
  * @author hinks
  */
 public class ProfileMenu extends javax.swing.JFrame {
-    public String username;
-    public String fullname;
-    public String email;
-    public String DOB;
-    public boolean admin;
-    public String address;
-    public String postcode;
+   
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ProfileMenu.class.getName());
 
@@ -31,36 +25,19 @@ public class ProfileMenu extends javax.swing.JFrame {
     public ProfileMenu() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        try{
-            FileReader fr = new FileReader("User.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String[] contents = br.readLine().split(",");
-            // contents example: username, first name, last name, email, phone no., dob, address, postcode, country, admin
-            username = contents[0];
-            fullname = contents[1]+" "+contents[2];
-            DOB = contents[5];
-            email = contents[3];
-            admin = Boolean.parseBoolean(contents[9]);
-            address = contents[6];
-            postcode = contents[7];
-            //System.out.println(username+","+fullname+","+DOB+","+admin+","+address+","+postcode);
-            
-            UsernameLabel.setText(username);
-            if(admin){
+        MainMenu main = new MainMenu();
+        DOBLabel.setText(main.DOB);
+        FullnameLabel.setText(main.fullname);
+        AddressLabel.setText(main.address);
+        PostcodeLabel.setText(main.postcode);
+        EmailLabel.setText(main.email);
+        UsernameLabel.setText(main.username);
+            if(main.admin){
                 AdminLabel.setText("Admin");
             }
             else{
                 AdminLabel.setText("User");
             }
-            DOBLabel.setText(DOB);
-            FullnameLabel.setText(fullname);
-            AddressLabel.setText(address);
-            PostcodeLabel.setText(postcode);
-            EmailLabel.setText(email);
-        }
-        catch(IOException e){
-            System.out.println("No user file");
-        }
     }
 
     /**

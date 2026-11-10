@@ -6,6 +6,9 @@ package crochet.system;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +18,13 @@ import java.util.ArrayList;
 public class MainMenu extends javax.swing.JFrame {
     public int mainbodyfontsize = 15;
     public Font changedfont = new Font("Century Gothic",Font.PLAIN,mainbodyfontsize);
-    
+    public String username;
+    public String fullname;
+    public String email;
+    public String DOB;
+    public boolean admin;
+    public String address;
+    public String postcode;
     //ArrayList<String> labels = new ArrayList<String>();
     
     /**
@@ -28,6 +37,32 @@ public class MainMenu extends javax.swing.JFrame {
         MenusTabs.setBackgroundAt(2, new Color(129,244,225)); //green
         MenusTabs.setBackgroundAt(3, new Color(86,203,249)); //blue
         MenusTabs.setBackgroundAt(4, new Color(255,144,159));
+        
+        try{
+            FileReader fr = new FileReader("User.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String[] contents = br.readLine().split(",");
+            // contents example: username, first name, last name, email, phone no., dob, address, postcode, country, admin
+            username = contents[0];
+            fullname = contents[1]+" "+contents[2];
+            DOB = contents[5];
+            email = contents[3];
+            admin = Boolean.parseBoolean(contents[9]);
+            address = contents[6];
+            postcode = contents[7];
+            //System.out.println(username+","+fullname+","+DOB+","+admin+","+address+","+postcode);
+        }
+        catch(IOException e){
+            System.out.println("No user file");
+        }
+        
+        UsernameLabel.setText(username);
+            if(admin){
+                AdminLabel.setText("Admin");
+            }
+            else{
+                AdminLabel.setText("User");
+            }
     }
 
     /**
@@ -44,9 +79,9 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         MenusTabs = new javax.swing.JTabbedPane();
         MainMenuTab = new javax.swing.JPanel();
-        MainMenuSearchBar = new javax.swing.JTextField();
+        MainmenuSearchbar = new javax.swing.JTextField();
         CreatePatternsTab = new javax.swing.JPanel();
-        PatternsSearchBar = new javax.swing.JTextField();
+        PatternsSearchbar = new javax.swing.JTextField();
         AdviceTab = new javax.swing.JPanel();
         AdviceSearchBar = new javax.swing.JTextField();
         BuySellTab = new javax.swing.JPanel();
@@ -59,6 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
         UsernameLabel = new javax.swing.JLabel();
         AdminLabel = new javax.swing.JLabel();
         HeadingButton = new javax.swing.JButton();
+        AdminmenuButton = new javax.swing.JButton();
 
         jTabbedPane1.addTab("tab1", jTabbedPane2);
 
@@ -72,11 +108,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         MainMenuTab.setBackground(new java.awt.Color(255, 255, 255));
 
-        MainMenuSearchBar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
-        MainMenuSearchBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        MainMenuSearchBar.addActionListener(new java.awt.event.ActionListener() {
+        MainmenuSearchbar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        MainmenuSearchbar.setCaretColor(new java.awt.Color(255, 144, 159));
+        MainmenuSearchbar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MainMenuSearchBarActionPerformed(evt);
+                MainmenuSearchbarActionPerformed(evt);
             }
         });
 
@@ -85,15 +121,15 @@ public class MainMenu extends javax.swing.JFrame {
         MainMenuTabLayout.setHorizontalGroup(
             MainMenuTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainMenuTabLayout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
-                .addComponent(MainMenuSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(MainmenuSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
         MainMenuTabLayout.setVerticalGroup(
             MainMenuTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainMenuTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(MainMenuSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MainmenuSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(253, Short.MAX_VALUE))
         );
 
@@ -101,11 +137,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         CreatePatternsTab.setBackground(new java.awt.Color(255, 255, 255));
 
-        PatternsSearchBar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
-        PatternsSearchBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 114, 159), 2));
-        PatternsSearchBar.addActionListener(new java.awt.event.ActionListener() {
+        PatternsSearchbar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        PatternsSearchbar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PatternsSearchBarActionPerformed(evt);
+                PatternsSearchbarActionPerformed(evt);
             }
         });
 
@@ -113,16 +148,16 @@ public class MainMenu extends javax.swing.JFrame {
         CreatePatternsTab.setLayout(CreatePatternsTabLayout);
         CreatePatternsTabLayout.setHorizontalGroup(
             CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CreatePatternsTabLayout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
-                .addComponent(PatternsSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreatePatternsTabLayout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(PatternsSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
         CreatePatternsTabLayout.setVerticalGroup(
             CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CreatePatternsTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(PatternsSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PatternsSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(253, Short.MAX_VALUE))
         );
 
@@ -131,7 +166,6 @@ public class MainMenu extends javax.swing.JFrame {
         AdviceTab.setBackground(new java.awt.Color(255, 255, 255));
 
         AdviceSearchBar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
-        AdviceSearchBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(129, 244, 225), 2));
         AdviceSearchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdviceSearchBarActionPerformed(evt);
@@ -143,7 +177,7 @@ public class MainMenu extends javax.swing.JFrame {
         AdviceTabLayout.setHorizontalGroup(
             AdviceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdviceTabLayout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(AdviceSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
@@ -160,7 +194,7 @@ public class MainMenu extends javax.swing.JFrame {
         BuySellTab.setBackground(new java.awt.Color(255, 255, 255));
 
         BuysSellSearchBar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
-        BuysSellSearchBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(86, 203, 249), 2));
+        BuysSellSearchBar.setCaretColor(new java.awt.Color(255, 255, 204));
         BuysSellSearchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuysSellSearchBarActionPerformed(evt);
@@ -172,7 +206,7 @@ public class MainMenu extends javax.swing.JFrame {
         BuySellTabLayout.setHorizontalGroup(
             BuySellTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuySellTabLayout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(BuysSellSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
@@ -189,7 +223,6 @@ public class MainMenu extends javax.swing.JFrame {
         TutorialsTab.setBackground(new java.awt.Color(255, 255, 255));
 
         TutorialsSearchBar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
-        TutorialsSearchBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 114, 159), 2));
         TutorialsSearchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TutorialsSearchBarActionPerformed(evt);
@@ -200,17 +233,17 @@ public class MainMenu extends javax.swing.JFrame {
         TutorialsTab.setLayout(TutorialsTabLayout);
         TutorialsTabLayout.setHorizontalGroup(
             TutorialsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TutorialsTabLayout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+            .addGroup(TutorialsTabLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
                 .addComponent(TutorialsSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         TutorialsTabLayout.setVerticalGroup(
             TutorialsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TutorialsTabLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(25, 25, 25)
                 .addComponent(TutorialsSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Tutorials", TutorialsTab);
@@ -256,14 +289,17 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        AdminmenuButton.setBackground(new java.awt.Color(153, 51, 255));
+        AdminmenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdminmenuButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(MenusTabs)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -272,15 +308,19 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(HeadingButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(HeadingButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AdminmenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(174, 174, 174)))
                 .addComponent(BasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addComponent(SettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
+            .addComponent(MenusTabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,9 +336,11 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(AdminLabel))))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(SettingsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(BasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(AdminmenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(SettingsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(BasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(MenusTabs)
                 .addContainerGap())
@@ -335,10 +377,6 @@ public class MainMenu extends javax.swing.JFrame {
         profilemenu.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_ProfileButtonActionPerformed
 
-    private void PatternsSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatternsSearchBarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PatternsSearchBarActionPerformed
-
     private void AdviceSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdviceSearchBarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AdviceSearchBarActionPerformed
@@ -347,10 +385,6 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BuysSellSearchBarActionPerformed
 
-    private void MainMenuSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainMenuSearchBarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MainMenuSearchBarActionPerformed
-
     private void TutorialsSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorialsSearchBarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TutorialsSearchBarActionPerformed
@@ -358,6 +392,19 @@ public class MainMenu extends javax.swing.JFrame {
     private void HeadingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HeadingButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HeadingButtonActionPerformed
+
+    private void MainmenuSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainmenuSearchbarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MainmenuSearchbarActionPerformed
+
+    private void PatternsSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatternsSearchbarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PatternsSearchbarActionPerformed
+
+    private void AdminmenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminmenuButtonActionPerformed
+        AdminMenu adminmenu = new AdminMenu();
+        adminmenu.setVisible(true);
+    }//GEN-LAST:event_AdminmenuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,6 +443,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdminLabel;
+    private javax.swing.JButton AdminmenuButton;
     private javax.swing.JTextField AdviceSearchBar;
     private javax.swing.JPanel AdviceTab;
     private javax.swing.JButton BasketButton;
@@ -403,10 +451,10 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField BuysSellSearchBar;
     private javax.swing.JPanel CreatePatternsTab;
     private javax.swing.JButton HeadingButton;
-    private javax.swing.JTextField MainMenuSearchBar;
     private javax.swing.JPanel MainMenuTab;
+    private javax.swing.JTextField MainmenuSearchbar;
     private javax.swing.JTabbedPane MenusTabs;
-    private javax.swing.JTextField PatternsSearchBar;
+    private javax.swing.JTextField PatternsSearchbar;
     private javax.swing.JButton ProfileButton;
     private javax.swing.JButton SettingsButton;
     private javax.swing.JTextField TutorialsSearchBar;
