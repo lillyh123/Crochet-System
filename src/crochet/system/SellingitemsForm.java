@@ -4,6 +4,9 @@
  */
 package crochet.system;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -231,17 +234,19 @@ public class SellingitemsForm extends javax.swing.JFrame {
         String size = Sizetxt.getText();
         String type = String.valueOf(ProductCombo.getSelectedItem());
         String quantity = Quantitytxt.getText();
-        float numprice;
-        int numquantity;
+        float numprice = 0;
+        int numquantity = 0;
         boolean numsChecked = false;
+        
+        boolean allvalidation = false;
         
         try{
             numprice = Float.parseFloat(price);
             numquantity = Integer.parseInt(quantity);
+            numsChecked =true;
         }
         catch(NumberFormatException e){
             JOptionPane.showMessageDialog(rootPane,"Error! Price and quantity must both be suitable numbers!");
-            numsChecked =true;
         }
         
         
@@ -249,9 +254,23 @@ public class SellingitemsForm extends javax.swing.JFrame {
                 // finish validation
                 // write to a fil
                 // write to a record
+                allvalidation = true;
         }
         else{
             JOptionPane.showMessageDialog(rootPane,"Error! All fields should have text!");
+        }
+        
+        if(allvalidation){
+            int id = 0;
+            try {
+                id = utils.getID("ProductID.txt");
+                String record;
+                ProductsRecord p = new ProductsRecord(id,itemname,description,numprice,sizeunit,size,type,numquantity);
+                Data.productMap.put(String.valueOf(id),p);
+            } catch (IOException ex) {
+                Logger.getLogger(SellingitemsForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.print(id);
         }
     }//GEN-LAST:event_ItemsforsaleButtonActionPerformed
 
