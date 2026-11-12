@@ -1,0 +1,3 @@
+0,hat,crocheted hat,12.5,mm,20x12x3,Clothing,6
+1,scarf,crocheted scarf,20.0,mm,200x20x10,Clothing,10
+2,hat pattern,pattern,2.0,mm,20x30x2,Pattern,3

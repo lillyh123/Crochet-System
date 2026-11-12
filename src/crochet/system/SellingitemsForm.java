@@ -251,10 +251,21 @@ public class SellingitemsForm extends javax.swing.JFrame {
         
         
         if(numsChecked && utils.presenceCheck(itemname) && utils.presenceCheck(description) && utils.presenceCheck(price) && utils.presenceCheck(size)&& utils.presenceCheck(quantity)){
-                // finish validation
-                // write to a fil
-                // write to a record
-                allvalidation = true;
+                if(size.contains("x") && size.split("x").length==3){
+                    int[] sizeitems = new int[3];                  
+                    try{
+                        sizeitems[0] = Integer.parseInt(size.split("x")[0]);
+                        sizeitems[1] = Integer.parseInt(size.split("x")[1]);
+                        sizeitems[2] = Integer.parseInt(size.split("x")[2]);
+                        allvalidation = true;
+                    }
+                    catch(NumberFormatException e){
+                        JOptionPane.showMessageDialog(rootPane,"Error! Size must be in the format 'LxWxH', where L,W,H are integers!");
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(rootPane,"Error! Size must be in the format 'LxWxH', where L,W,H are integers!");
+                }
         }
         else{
             JOptionPane.showMessageDialog(rootPane,"Error! All fields should have text!");
@@ -264,9 +275,19 @@ public class SellingitemsForm extends javax.swing.JFrame {
             int id = 0;
             try {
                 id = utils.getID("ProductID.txt");
-                String record;
+                String record = id+","+itemname+","+description+","+numprice+","+sizeunit+","+size+","+type+","+numquantity;
+                utils.writeToFile("Products.txt", record);
                 ProductsRecord p = new ProductsRecord(id,itemname,description,numprice,sizeunit,size,type,numquantity);
                 Data.productMap.put(String.valueOf(id),p);
+                
+                ItemNametxt.setText("");
+                Descriptiontxt.setText("");
+                Pricetxt.setText("");
+                Quantitytxt.setText("");
+                Sizetxt.setText("");
+                
+                JOptionPane.showMessageDialog(rootPane,"Success! "+itemname+" is now available to purchase!");
+                
             } catch (IOException ex) {
                 Logger.getLogger(SellingitemsForm.class.getName()).log(Level.SEVERE, null, ex);
             }

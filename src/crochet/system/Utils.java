@@ -77,4 +77,12 @@ public class Utils {
             
         }
     }
+    
+    public void writeToFile(String filename, String data) throws IOException{
+        FileWriter fw = new FileWriter(filename,true);
+        BufferedWriter br = new BufferedWriter(fw);
+        br.write(data);
+        br.newLine();
+        br.close();
+    }
 }
