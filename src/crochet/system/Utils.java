@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JPanel;
 
 /**
  *
@@ -84,5 +85,21 @@ public class Utils {
         br.write(data);
         br.newLine();
         br.close();
+    }
+    
+    public String getRecordBasedOnId(String filename, int id) throws FileNotFoundException{
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        // read record
+        return "";
+    }
+    
+    public JPanel createAdviceBox(String title, String content){
+       System.out.println("here 3");
+       AdviceBoxPanel advicepanel = new AdviceBoxPanel(); 
+       advicepanel.setTitle(title);
+       advicepanel.setContent(content);
+       System.out.println("here 4");
+       return advicepanel;
     }
 }

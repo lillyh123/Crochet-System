@@ -184,6 +184,7 @@ public class ProfileMenu extends javax.swing.JFrame {
         EditDetailsButton.addActionListener(this::EditDetailsButtonActionPerformed);
 
         AdminmenuButton.setBackground(new java.awt.Color(153, 51, 255));
+        AdminmenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crochet/system/graphbg (2).png"))); // NOI18N
         AdminmenuButton.addActionListener(this::AdminmenuButtonActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

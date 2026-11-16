@@ -1,0 +1,6 @@
+Helpful website,website link*newline*this website is good to start crocheting*newline*,Website,ste27,0
+ Good pattern for beginners, Pattern:*newline*- asdasd*newline*-sdasd*newline*- sadsd,Website,ste27,0
+2,asd,asdasdasd*newline*asdasd,Video,ste27,0
+3,new advice,dasdadasdasd*newline*asdasd,Website,ste27,0
+4,NEWER advice,testing*newline*testing,Video,ste27,0
+5,sdasd,asdasdsd*newline*asdasdas*newline*dasdasd,Video,ste27,0

@@ -10,6 +10,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.BoxLayout;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -17,6 +19,7 @@ import java.util.ArrayList;
  */
 public class MainMenu extends javax.swing.JFrame {
     //load file to records
+    Utils u1 = new Utils();
     public int mainbodyfontsize = 15;
     public Font changedfont = new Font("Century Gothic",Font.PLAIN,mainbodyfontsize);
     public String username;
@@ -31,6 +34,7 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * Creates new form MainMenu
      */
+    
     public MainMenu() {
         initComponents();
         MenusTabs.setBackgroundAt(0, new Color(255,255,255));
@@ -38,6 +42,8 @@ public class MainMenu extends javax.swing.JFrame {
         MenusTabs.setBackgroundAt(2, new Color(129,244,225)); //green
         MenusTabs.setBackgroundAt(3, new Color(86,203,249)); //blue
         MenusTabs.setBackgroundAt(4, new Color(255,144,159));
+        AdvicePanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        AllAdvicePanel.setLayout(new BoxLayout(AllAdvicePanel, BoxLayout.Y_AXIS));
         
         try{
             FileReader fr = new FileReader("User.txt");
@@ -64,7 +70,9 @@ public class MainMenu extends javax.swing.JFrame {
             else{
                 AdminLabel.setText("User");
             }
+     
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,8 +91,31 @@ public class MainMenu extends javax.swing.JFrame {
         MainmenuSearchbar = new javax.swing.JTextField();
         CreatePatternsTab = new javax.swing.JPanel();
         PatternsSearchbar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        UnitCombo = new javax.swing.JComboBox<>();
+        Widthtxt = new javax.swing.JTextField();
+        Heighttxt = new javax.swing.JTextField();
+        UnitLabel1 = new javax.swing.JLabel();
+        UnitLabel2 = new javax.swing.JLabel();
+        GridSizetxt = new javax.swing.JTextField();
+        NoColourstxt = new javax.swing.JTextField();
+        StitchCombo = new javax.swing.JComboBox<>();
+        DifficultyCombo = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        UploadImageButton = new javax.swing.JButton();
+        ContinueButton = new javax.swing.JButton();
         AdviceTab = new javax.swing.JPanel();
         AdviceSearchBar = new javax.swing.JTextField();
+        AddAdviceButton = new javax.swing.JButton();
+        AdvicePanel = new javax.swing.JScrollPane();
+        AllAdvicePanel = new javax.swing.JPanel();
         BuySellTab = new javax.swing.JPanel();
         BuysSellSearchBar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -124,7 +155,7 @@ public class MainMenu extends javax.swing.JFrame {
         MainMenuTabLayout.setHorizontalGroup(
             MainMenuTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainMenuTabLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(MainmenuSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
@@ -133,7 +164,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(MainMenuTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(MainmenuSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(474, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Main Menu", MainMenuTab);
@@ -148,21 +179,216 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
+        jLabel1.setText("Freehand");
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel3.setText("Unit");
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel4.setText("Width");
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel5.setText("Height");
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel6.setText("Grid size (width x height)");
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel7.setText("Number of colours");
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel8.setText("Stitch");
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel9.setText("Difficulty level");
+
+        UnitCombo.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        UnitCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "m", "inch", "ft" }));
+        UnitCombo.setOpaque(true);
+        UnitCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UnitComboActionPerformed(evt);
+            }
+        });
+
+        Widthtxt.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        Widthtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WidthtxtActionPerformed(evt);
+            }
+        });
+
+        Heighttxt.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        Heighttxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HeighttxtActionPerformed(evt);
+            }
+        });
+
+        UnitLabel1.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        UnitLabel1.setText("[unit]");
+
+        UnitLabel2.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        UnitLabel2.setText("[unit]");
+
+        GridSizetxt.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        GridSizetxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GridSizetxtActionPerformed(evt);
+            }
+        });
+
+        NoColourstxt.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        NoColourstxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoColourstxtActionPerformed(evt);
+            }
+        });
+
+        StitchCombo.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        StitchCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sc", "dc", "st", "slst", "hdc", "tc" }));
+        StitchCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StitchComboActionPerformed(evt);
+            }
+        });
+
+        DifficultyCombo.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        DifficultyCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Beginner", "Easy", "Intermediate", "Advanced" }));
+        DifficultyCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DifficultyComboActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
+        jLabel10.setText("Upload an image instead:");
+
+        UploadImageButton.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        UploadImageButton.setText("Upload image");
+        UploadImageButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        UploadImageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadImageButtonActionPerformed(evt);
+            }
+        });
+
+        ContinueButton.setBackground(new java.awt.Color(255, 144, 159));
+        ContinueButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        ContinueButton.setText("Continue");
+        ContinueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinueButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CreatePatternsTabLayout = new javax.swing.GroupLayout(CreatePatternsTab);
         CreatePatternsTab.setLayout(CreatePatternsTabLayout);
         CreatePatternsTabLayout.setHorizontalGroup(
             CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreatePatternsTabLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(PatternsSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+            .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                        .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(UnitCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Widthtxt)
+                                    .addComponent(Heighttxt))
+                                .addGap(18, 18, 18)
+                                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(UnitLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                                        .addComponent(UnitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(GridSizetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(53, 53, 53)
+                        .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UploadImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(83, 83, 83))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreatePatternsTabLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(PatternsSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96))
+                    .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                        .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(StitchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DifficultyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CreatePatternsTabLayout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(NoColourstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(404, 417, Short.MAX_VALUE)
+                        .addComponent(ContinueButton)
+                        .addGap(181, 181, 181))))
         );
         CreatePatternsTabLayout.setVerticalGroup(
             CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CreatePatternsTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(PatternsSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(UnitCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(Widthtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UnitLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(Heighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UnitLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(GridSizetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(NoColourstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(StitchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(DifficultyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(174, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreatePatternsTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(UploadImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ContinueButton)
+                .addGap(72, 72, 72))
         );
 
         MenusTabs.addTab("Create Patterns", CreatePatternsTab);
@@ -177,21 +403,58 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        AddAdviceButton.setBackground(new java.awt.Color(129, 244, 225));
+        AddAdviceButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        AddAdviceButton.setText("Add your own advice");
+        AddAdviceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddAdviceButtonActionPerformed(evt);
+            }
+        });
+
+        AllAdvicePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout AllAdvicePanelLayout = new javax.swing.GroupLayout(AllAdvicePanel);
+        AllAdvicePanel.setLayout(AllAdvicePanelLayout);
+        AllAdvicePanelLayout.setHorizontalGroup(
+            AllAdvicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 986, Short.MAX_VALUE)
+        );
+        AllAdvicePanelLayout.setVerticalGroup(
+            AllAdvicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 396, Short.MAX_VALUE)
+        );
+
+        AdvicePanel.setViewportView(AllAdvicePanel);
+
         javax.swing.GroupLayout AdviceTabLayout = new javax.swing.GroupLayout(AdviceTab);
         AdviceTab.setLayout(AdviceTabLayout);
         AdviceTabLayout.setHorizontalGroup(
             AdviceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdviceTabLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+            .addGroup(AdviceTabLayout.createSequentialGroup()
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(AdviceSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
+            .addGroup(AdviceTabLayout.createSequentialGroup()
+                .addGroup(AdviceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AdviceTabLayout.createSequentialGroup()
+                        .addGap(348, 348, 348)
+                        .addComponent(AddAdviceButton))
+                    .addGroup(AdviceTabLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(AdvicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AdviceTabLayout.setVerticalGroup(
             AdviceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdviceTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(AdviceSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AddAdviceButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AdvicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Advice", AdviceTab);
@@ -224,7 +487,7 @@ public class MainMenu extends javax.swing.JFrame {
         BuySellTabLayout.setHorizontalGroup(
             BuySellTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuySellTabLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(BuysSellSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
             .addGroup(BuySellTabLayout.createSequentialGroup()
@@ -243,7 +506,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(BuySellTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(ItemsforsaleButton))
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(423, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Buy/Sell", BuySellTab);
@@ -264,7 +527,7 @@ public class MainMenu extends javax.swing.JFrame {
         TutorialsTabLayout.setHorizontalGroup(
             TutorialsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TutorialsTabLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(TutorialSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
@@ -273,7 +536,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(TutorialsTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(TutorialSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(474, Short.MAX_VALUE))
         );
 
         MenusTabs.addTab("Tutorials", TutorialsTab);
@@ -320,6 +583,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         AdminmenuButton.setBackground(new java.awt.Color(153, 51, 255));
+        AdminmenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crochet/system/graphbg (2).png"))); // NOI18N
         AdminmenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdminmenuButtonActionPerformed(evt);
@@ -371,7 +635,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(SettingsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(BasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(MenusTabs)
                 .addContainerGap())
         );
@@ -384,9 +648,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -441,6 +703,47 @@ public class MainMenu extends javax.swing.JFrame {
         sellingform.setVisible(true);
     }//GEN-LAST:event_ItemsforsaleButtonActionPerformed
 
+    private void AddAdviceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAdviceButtonActionPerformed
+        NewAdviceForm adviceform = new NewAdviceForm();
+        adviceform.setVisible(true);
+    }//GEN-LAST:event_AddAdviceButtonActionPerformed
+
+    private void WidthtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WidthtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WidthtxtActionPerformed
+
+    private void HeighttxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HeighttxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HeighttxtActionPerformed
+
+    private void UnitComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnitComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UnitComboActionPerformed
+
+    private void GridSizetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GridSizetxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GridSizetxtActionPerformed
+
+    private void NoColourstxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoColourstxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoColourstxtActionPerformed
+
+    private void StitchComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StitchComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StitchComboActionPerformed
+
+    private void DifficultyComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DifficultyComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DifficultyComboActionPerformed
+
+    private void UploadImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadImageButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UploadImageButtonActionPerformed
+
+    private void ContinueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinueButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContinueButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -477,28 +780,52 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddAdviceButton;
     private javax.swing.JLabel AdminLabel;
     private javax.swing.JButton AdminmenuButton;
+    private javax.swing.JScrollPane AdvicePanel;
     private javax.swing.JTextField AdviceSearchBar;
     private javax.swing.JPanel AdviceTab;
+    private javax.swing.JPanel AllAdvicePanel;
     private javax.swing.JButton BasketButton;
     private javax.swing.JPanel BuySellTab;
     private javax.swing.JTextField BuysSellSearchBar;
+    private javax.swing.JButton ContinueButton;
     private javax.swing.JPanel CreatePatternsTab;
+    private javax.swing.JComboBox<String> DifficultyCombo;
+    private javax.swing.JTextField GridSizetxt;
     private javax.swing.JButton HeadingButton;
+    private javax.swing.JTextField Heighttxt;
     private javax.swing.JButton ItemsforsaleButton;
     private javax.swing.JPanel MainMenuTab;
     private javax.swing.JTextField MainmenuSearchbar;
     private javax.swing.JTabbedPane MenusTabs;
+    private javax.swing.JTextField NoColourstxt;
     private javax.swing.JTextField PatternsSearchbar;
     private javax.swing.JButton ProfileButton;
     private javax.swing.JButton SettingsButton;
+    private javax.swing.JComboBox<String> StitchCombo;
     private javax.swing.JTextField TutorialSearchbar;
     private javax.swing.JPanel TutorialsTab;
+    private javax.swing.JComboBox<String> UnitCombo;
+    private javax.swing.JLabel UnitLabel1;
+    private javax.swing.JLabel UnitLabel2;
+    private javax.swing.JButton UploadImageButton;
     private javax.swing.JLabel UsernameLabel;
+    private javax.swing.JTextField Widthtxt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
+    
 }

@@ -13,6 +13,6 @@ import java.util.Map;
  */
 public class Data {
     public static Map<String, ProductsRecord> productMap = new HashMap();
-    
+    public static Map<String, AdviceRecord> adviceMap = new HashMap();
     
 }

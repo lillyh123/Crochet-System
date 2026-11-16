@@ -15,13 +15,14 @@ import javax.swing.JOptionPane;
  * @author lbh20b
  */
 public class SellingitemsForm extends javax.swing.JFrame {
-    public Utils utils = new Utils();
+    Utils utils = new Utils();
     /**
      * Creates new form SellingitemsForm
      */
     public SellingitemsForm() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       
         
     }
 
@@ -102,6 +103,7 @@ public class SellingitemsForm extends javax.swing.JFrame {
             }
         });
 
+        UnitCombo.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
         UnitCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "m", "inch", "ft" }));
 
         Sizetxt.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
@@ -111,6 +113,7 @@ public class SellingitemsForm extends javax.swing.JFrame {
             }
         });
 
+        ProductCombo.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
         ProductCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pattern", "Clothing", "Amigurmi", "Household", "Accessories", "Decoration", "Toys" }));
 
         Quantitytxt.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
@@ -197,7 +200,7 @@ public class SellingitemsForm extends javax.swing.JFrame {
                     .addComponent(Quantitytxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(ItemsforsaleButton)
                 .addGap(16, 16, 16))
         );
@@ -234,6 +237,10 @@ public class SellingitemsForm extends javax.swing.JFrame {
         String size = Sizetxt.getText();
         String type = String.valueOf(ProductCombo.getSelectedItem());
         String quantity = Quantitytxt.getText();
+        
+        MainMenu main = new MainMenu();
+        String sellerusername = main.username;
+        
         float numprice = 0;
         int numquantity = 0;
         boolean numsChecked = false;
@@ -277,7 +284,7 @@ public class SellingitemsForm extends javax.swing.JFrame {
                 id = utils.getID("ProductID.txt");
                 String record = id+","+itemname+","+description+","+numprice+","+sizeunit+","+size+","+type+","+numquantity;
                 utils.writeToFile("Products.txt", record);
-                ProductsRecord p = new ProductsRecord(id,itemname,description,numprice,sizeunit,size,type,numquantity);
+                ProductsRecord p = new ProductsRecord(id,itemname,description,numprice,sizeunit,size,type,numquantity,sellerusername);
                 Data.productMap.put(String.valueOf(id),p);
                 
                 ItemNametxt.setText("");
