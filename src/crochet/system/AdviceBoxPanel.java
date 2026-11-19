@@ -4,6 +4,8 @@
  */
 package crochet.system;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author hinks
@@ -15,15 +17,16 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
      */
     public AdviceBoxPanel() {
         initComponents();
+        this.setPreferredSize(new Dimension(285, 215));
     }
 
-    public void setTitle(String title){
+    public void setData(String title, String content){
         TitleLabel.setText(title);
+        AdviceArea.setText(content.replaceAll("!newline!", "\n"));
+        //"\\n", "*newline*"
     }
     
-    public void setContent(String advice){
-        AdviceLabel.setText(advice);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +39,8 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        AdviceLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AdviceArea = new javax.swing.JTextArea();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -54,8 +58,9 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
             }
         });
 
-        AdviceLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        AdviceLabel.setText("Advice");
+        AdviceArea.setColumns(20);
+        AdviceArea.setRows(5);
+        jScrollPane1.setViewportView(AdviceArea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -66,10 +71,12 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton1))
-                    .addComponent(AdviceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1)
+                        .addGap(16, 16, 16))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,8 +86,8 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
                     .addComponent(jButton1)
                     .addComponent(TitleLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AdviceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -91,7 +98,7 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,9 +109,10 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdviceLabel;
+    private javax.swing.JTextArea AdviceArea;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

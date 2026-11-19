@@ -5,11 +5,13 @@
 package crochet.system;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
 
@@ -35,15 +37,19 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     
-    public MainMenu() {
+    public MainMenu(int TabIndex) {
         initComponents();
         MenusTabs.setBackgroundAt(0, new Color(255,255,255));
         MenusTabs.setBackgroundAt(1, new Color(255,144,159)); //pink
         MenusTabs.setBackgroundAt(2, new Color(129,244,225)); //green
         MenusTabs.setBackgroundAt(3, new Color(86,203,249)); //blue
         MenusTabs.setBackgroundAt(4, new Color(255,144,159));
+        
+        MenusTabs.setSelectedIndex(TabIndex);
+        
         AdvicePanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         AllAdvicePanel.setLayout(new BoxLayout(AllAdvicePanel, BoxLayout.Y_AXIS));
+        AllAdvicePanel.setLayout(new GridLayout(0, 3, 10, 10));
         
         try{
             FileReader fr = new FileReader("User.txt");
@@ -73,6 +79,22 @@ public class MainMenu extends javax.swing.JFrame {
      
     }
     
+    public void loadAdviceItems() throws FileNotFoundException, IOException{
+        AllAdvicePanel.removeAll();
+        FileReader fr = new FileReader("Advice.txt");
+        BufferedReader br = new BufferedReader(fr);
+        String line;
+        while((line=br.readLine())!=null){
+            String[] items = line.split(",");
+            AdviceBoxPanel adviceItem = new AdviceBoxPanel();
+            adviceItem.setData(items[1], items[2]);
+            AllAdvicePanel.add(adviceItem);
+        }
+        AllAdvicePanel.revalidate();
+        AllAdvicePanel.repaint();
+        AdvicePanel.revalidate();
+        AdvicePanel.repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -367,9 +389,9 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(Heighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(UnitLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(GridSizetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(GridSizetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CreatePatternsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -774,7 +796,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                new MainMenu(0).setVisible(true);
             }
         });
     }

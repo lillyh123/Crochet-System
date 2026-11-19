@@ -151,7 +151,7 @@ public class SettingsMenu extends javax.swing.JFrame {
 
     private void SaveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveChangesButtonActionPerformed
         int size = Integer.parseInt(FontsizeSpinner.getValue().toString());
-        MainMenu menu = new MainMenu();
+        MainMenu menu = new MainMenu(0);
         menu.mainbodyfontsize = size;
     }//GEN-LAST:event_SaveChangesButtonActionPerformed
 

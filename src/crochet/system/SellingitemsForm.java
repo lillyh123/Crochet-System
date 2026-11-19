@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class SellingitemsForm extends javax.swing.JFrame {
     Utils utils = new Utils();
+    MainMenu main = new MainMenu(3);
     /**
      * Creates new form SellingitemsForm
      */
@@ -237,8 +238,7 @@ public class SellingitemsForm extends javax.swing.JFrame {
         String size = Sizetxt.getText();
         String type = String.valueOf(ProductCombo.getSelectedItem());
         String quantity = Quantitytxt.getText();
-        
-        MainMenu main = new MainMenu();
+       
         String sellerusername = main.username;
         
         float numprice = 0;

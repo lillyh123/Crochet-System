@@ -25,7 +25,7 @@ public class ProfileMenu extends javax.swing.JFrame {
     public ProfileMenu() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        MainMenu main = new MainMenu();
+        MainMenu main = new MainMenu(0);
         DOBLabel.setText(main.DOB);
         FullnameLabel.setText(main.fullname);
         AddressLabel.setText(main.address);

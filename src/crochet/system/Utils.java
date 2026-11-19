@@ -94,12 +94,4 @@ public class Utils {
         return "";
     }
     
-    public JPanel createAdviceBox(String title, String content){
-       System.out.println("here 3");
-       AdviceBoxPanel advicepanel = new AdviceBoxPanel(); 
-       advicepanel.setTitle(title);
-       advicepanel.setContent(content);
-       System.out.println("here 4");
-       return advicepanel;
-    }
 }

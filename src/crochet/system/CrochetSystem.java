@@ -4,6 +4,8 @@
  */
 package crochet.system;
 
+import java.io.IOException;
+
 /**
  *
  * @author lbh20b
@@ -13,9 +15,10 @@ public class CrochetSystem {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        MainMenu mainmenu = new MainMenu();
+    public static void main(String[] args) throws IOException {
+        MainMenu mainmenu = new MainMenu(0);
         mainmenu.setVisible(true);
+        mainmenu.loadAdviceItems();
     }
     
 }

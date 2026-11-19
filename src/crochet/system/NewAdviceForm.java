@@ -16,13 +16,18 @@ import javax.swing.JOptionPane;
  */
 public class NewAdviceForm extends javax.swing.JFrame {
     Utils u1 = new Utils();
+    MainMenu main = new MainMenu(2);
+    
+    
     /**
      * Creates new form NewAdviceForm
      */
+ 
     public NewAdviceForm() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+    
     
 
     /**
@@ -164,11 +169,9 @@ public class NewAdviceForm extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
        String title = Titletxt.getText();
-       String content = Contenttxt.getText().replaceAll("\\n", "*newline*");
+       String content = Contenttxt.getText().replaceAll("\\n", "!newline!");
        String type = String.valueOf(AdviceTypeCombo.getSelectedItem());
        System.out.println(content);
-       
-       MainMenu main = new MainMenu();
        String adviserusername = main.username;
         
        boolean validation = false;
@@ -199,6 +202,11 @@ public class NewAdviceForm extends javax.swing.JFrame {
                Contenttxt.setText(" ");
                
                JOptionPane.showMessageDialog(rootPane, "Success! Advice titled "+title+" saved!");
+               main.loadAdviceItems();
+               main.setVisible(true);
+               this.dispose();
+               
+               
 
            } catch (IOException ex) {
                Logger.getLogger(NewAdviceForm.class.getName()).log(Level.SEVERE, null, ex);
