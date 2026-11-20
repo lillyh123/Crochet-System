@@ -37,11 +37,11 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     
-    public MainMenu(int TabIndex) {
+    public MainMenu(int TabIndex){
         initComponents();
         MenusTabs.setBackgroundAt(0, new Color(255,255,255));
         MenusTabs.setBackgroundAt(1, new Color(255,144,159)); //pink
-        MenusTabs.setBackgroundAt(2, new Color(129,244,225)); //green
+            MenusTabs.setBackgroundAt(2, new Color(129,244,225)); //green
         MenusTabs.setBackgroundAt(3, new Color(86,203,249)); //blue
         MenusTabs.setBackgroundAt(4, new Color(255,144,159));
         
@@ -97,7 +97,7 @@ public class MainMenu extends javax.swing.JFrame {
         while((line=br.readLine())!=null){
             String[] items = line.split(",");
             AdviceBoxPanel adviceItem = new AdviceBoxPanel();
-            adviceItem.setData(items[1], items[2]);
+            adviceItem.setData(items[1], items[2], items[4], items[0]);
             AllAdvicePanel.add(adviceItem);
         }
         AllAdvicePanel.revalidate();
@@ -114,7 +114,7 @@ public class MainMenu extends javax.swing.JFrame {
         while((line=br.readLine())!=null){
             String[] items = line.split(",");
             ProductBoxPanel productBox = new ProductBoxPanel();
-            productBox.setData(items[1], items[3], items[2]);
+            productBox.setData(items[1], items[3], items[2], items[0]);
             AllItemsPanel.add(productBox);
         }
         AllItemsPanel.revalidate();

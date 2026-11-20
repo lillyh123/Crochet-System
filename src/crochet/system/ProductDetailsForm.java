@@ -4,6 +4,8 @@
  */
 package crochet.system;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author lbh20b
@@ -15,6 +17,7 @@ public class ProductDetailsForm extends javax.swing.JFrame {
      */
     public ProductDetailsForm() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -34,7 +37,6 @@ public class ProductDetailsForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         SizeLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        UnitLabel = new javax.swing.JLabel();
         TitleLabel = new javax.swing.JLabel();
         CategoryLabel = new javax.swing.JLabel();
         PoundSign = new javax.swing.JLabel();
@@ -67,14 +69,10 @@ public class ProductDetailsForm extends javax.swing.JFrame {
         jLabel1.setText("Viewing a product");
 
         SizeLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        SizeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        SizeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         SizeLabel.setText("0x0x0");
 
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        UnitLabel.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
-        UnitLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        UnitLabel.setText("mm");
 
         TitleLabel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         TitleLabel.setText("Title");
@@ -133,15 +131,15 @@ public class ProductDetailsForm extends javax.swing.JFrame {
                                         .addComponent(PriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(RatingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CategoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(AddToBasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(SizeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(UnitLabel))))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(AddToBasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SizeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -170,8 +168,7 @@ public class ProductDetailsForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label)
-                            .addComponent(SizeLabel)
-                            .addComponent(UnitLabel))
+                            .addComponent(SizeLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(CategoryLabel))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,14 +190,15 @@ public class ProductDetailsForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void setDetails(String title, String description, String price, String quantity, String seller, String rating, String category){
+    public void setDetails(String title, String description, String price, String quantity, String seller, String rating, String category, String size, String unit){
         TitleLabel.setText(title);
         DescriptionLabel.setText(description);
-        PriceLabel.setText(price);
+        PriceLabel.setText(price); 
         QuantityLabel.setText(quantity);
         SellerLabel.setText(seller);
-        RatingLabel.setText(rating);
-        CategoryLabel.setText(category);
+        RatingLabel.setText("Rating: "+rating+"/10");
+        CategoryLabel.setText("Category: "+category);
+        SizeLabel.setText(size+" "+unit);
     }
     
     
@@ -256,7 +254,6 @@ public class ProductDetailsForm extends javax.swing.JFrame {
     private javax.swing.JLabel SellerLabel;
     private javax.swing.JLabel SizeLabel;
     private javax.swing.JLabel TitleLabel;
-    private javax.swing.JLabel UnitLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

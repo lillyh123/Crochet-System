@@ -11,7 +11,9 @@ import java.awt.Dimension;
  * @author hinks
  */
 public class AdviceBoxPanel extends javax.swing.JPanel {
-
+    String creator;
+    String advicetitle;
+    String adviceid;
     /**
      * Creates new form AdviceBoxPanel
      */
@@ -20,10 +22,12 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
         this.setPreferredSize(new Dimension(285, 207));
     }
 
-    public void setData(String title, String content){
+    public void setData(String title, String content, String username, String id){
         TitleLabel.setText(title);
         AdviceArea.setText(content.replaceAll("!newline!", "\n"));
-        //"\\n", "*newline*"
+        advicetitle = title;
+        creator = username;
+        adviceid = id;
     }
     
 
@@ -37,7 +41,7 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         TitleLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ReportButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         AdviceArea = new javax.swing.JTextArea();
 
@@ -46,16 +50,17 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
         TitleLabel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         TitleLabel.setText("Title");
 
-        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jButton1.setText("Report");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ReportButton.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        ReportButton.setText("Report");
+        ReportButton.setBorder(null);
+        ReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ReportButtonActionPerformed(evt);
             }
         });
 
         AdviceArea.setColumns(20);
+        AdviceArea.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         AdviceArea.setRows(5);
         jScrollPane1.setViewportView(AdviceArea);
 
@@ -69,7 +74,7 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(26, 26, 26)
-                        .addComponent(jButton1)
+                        .addComponent(ReportButton)
                         .addGap(8, 8, 8))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7))
@@ -79,7 +84,7 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(ReportButton)
                     .addComponent(TitleLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -88,15 +93,17 @@ public class AdviceBoxPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportButtonActionPerformed
+        ReportingForm reportform = new ReportingForm();
+        reportform.setSentence(creator, advicetitle, adviceid);
+        reportform.setVisible(true);
+    }//GEN-LAST:event_ReportButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AdviceArea;
+    private javax.swing.JButton ReportButton;
     private javax.swing.JLabel TitleLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

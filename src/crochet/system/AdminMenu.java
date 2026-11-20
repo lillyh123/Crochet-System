@@ -31,6 +31,9 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        StatisticsButton = new javax.swing.JButton();
+        TutorialsButton = new javax.swing.JButton();
+        AllUsersButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,21 +42,62 @@ public class AdminMenu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
         jLabel2.setText("Admin Menu");
 
+        StatisticsButton.setBackground(new java.awt.Color(255, 144, 159));
+        StatisticsButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        StatisticsButton.setText("Statistics");
+        StatisticsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatisticsButtonActionPerformed(evt);
+            }
+        });
+
+        TutorialsButton.setBackground(new java.awt.Color(129, 244, 225));
+        TutorialsButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        TutorialsButton.setText("Tutorials");
+        TutorialsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TutorialsButtonActionPerformed(evt);
+            }
+        });
+
+        AllUsersButton.setBackground(new java.awt.Color(86, 203, 249));
+        AllUsersButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
+        AllUsersButton.setText("All Users");
+        AllUsersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllUsersButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TutorialsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StatisticsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AllUsersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(StatisticsButton)
+                .addGap(18, 18, 18)
+                .addComponent(TutorialsButton)
+                .addGap(18, 18, 18)
+                .addComponent(AllUsersButton)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -69,6 +113,21 @@ public class AdminMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TutorialsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorialsButtonActionPerformed
+        AdminTutorialsForm tutorialsform = new AdminTutorialsForm();
+        tutorialsform.setVisible(true);
+    }//GEN-LAST:event_TutorialsButtonActionPerformed
+
+    private void AllUsersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllUsersButtonActionPerformed
+        AdminUsersForm usersform = new AdminUsersForm();
+        usersform.setVisible(true);
+    }//GEN-LAST:event_AllUsersButtonActionPerformed
+
+    private void StatisticsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatisticsButtonActionPerformed
+       AdminStatisticsForm statsform = new AdminStatisticsForm();
+       statsform.setVisible(true);
+    }//GEN-LAST:event_StatisticsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +165,9 @@ public class AdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AllUsersButton;
+    private javax.swing.JButton StatisticsButton;
+    private javax.swing.JButton TutorialsButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

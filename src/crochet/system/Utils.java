@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.JPanel;
 
 /**
  *
@@ -94,9 +93,34 @@ public class Utils {
         return "";
     }
     
-    public int getSellerRating(String username){
-        return 0;
+    public int countReports(String adviceid) throws FileNotFoundException, IOException{
+        FileReader fr = new FileReader("Advice.txt");
+        BufferedReader br = new BufferedReader(fr);
+        int count = 0;
+        String line;
+        while((line=br.readLine())!=null){
+            String items[] = line.split(",");
+            if(items[1].equals(adviceid)){
+                count ++;
+            }
+        }
+        return count;
     }
     
+    public void editFileRecord(String filename, String recordId, String indexToChange) throws FileNotFoundException{
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        //need to create a whole new file/overwrite entire file
+    }
   
+    public String getAllFileContent(String filename) throws FileNotFoundException, IOException{
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        String content = "";
+        String line;
+        while((line=br.readLine())!=null){
+            content = content+"\n"+line;
+        }
+        return content;
+    }
 }

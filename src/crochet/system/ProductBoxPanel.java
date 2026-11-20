@@ -21,15 +21,17 @@ public class ProductBoxPanel extends javax.swing.JPanel {
     /**
      * Creates new form ProductBoxPanel
      */
+    String id;
     public ProductBoxPanel() {
         initComponents();
         this.setPreferredSize(new Dimension(330, 271));
     }
     
-    public void setData(String title, String price, String description){
-        PriceLabel.setText(price);
+    public void setData(String title, String price, String description, String userid){
+        PriceLabel.setText(String.format("%.2f", Float.parseFloat(price))); // 2 d.p
         TitleLabel.setText(title);
         DescriptionLabel.setText(description);
+        id = userid;
     }
 
     /**
@@ -105,7 +107,22 @@ public class ProductBoxPanel extends javax.swing.JPanel {
     private void ImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImageButtonActionPerformed
         ProductDetailsForm productDetails = new ProductDetailsForm();
         FileReader fr;
-        //productDetails.setDetails(items[1], items[2], items[3], items[7],items[9], items[10], items[6]);
+        System.out.println(id);
+        try {
+            fr = new FileReader("Products.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while((line=br.readLine())!=null){
+                String items[] = line.split(",");
+                if(items[0].equals(id)){
+                    productDetails.setDetails(items[1], items[2], String.format("%.2f", Float.parseFloat(items[3])), items[7],items[8], items[9], items[6], items[5], items[4]);
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ProductBoxPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ProductBoxPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         productDetails.setVisible(true);
     }//GEN-LAST:event_ImageButtonActionPerformed
