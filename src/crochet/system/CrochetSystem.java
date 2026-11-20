@@ -19,6 +19,7 @@ public class CrochetSystem {
         MainMenu mainmenu = new MainMenu(0);
         mainmenu.setVisible(true);
         mainmenu.loadAdviceItems();
+        mainmenu.loadProducts();
     }
     
 }

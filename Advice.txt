@@ -1,5 +1,2 @@
-0,Tutorials,- steps!newline!- point!newline!- iskadasd!newline!- testing!newline!,Video,ste27,0
-1,Another,- asdasd!newline!- adasd!newline!- adasd!newline!,Video,ste27,0
-2,Pattern,pattern here:!newline!djaskdakafjafsgkvncdjkvdsifsdkjcnsdkjvkds!newline!asdjasdkasdaa!newline!jadshajskfkalf!newline!kljkfasfs,Pattern,ste27,0
-3,asdasndamdmasd,asdjasdjsands!newline!dafsdkfskdas!newline!slkhgdkkdka/f!newline!dsf;jfksjkflskfkgdsjflsdfjszkdjsdkfhsdjfhsdjfsdjf,Video,ste27,0
-4,New advice,asdsad!newline!asdasda!newline!sda!newline!dasd,Video,ste27,0
+0,Advice,pattern!newline!- ajdasd!newline!- asdasdas,Pattern,ste27,0
+1,sdfsdfsd,fsdfsdfsfsdfsdfs!newline!sdfsdfsdffsdfsdf!newline!sdfsdfsdfsdfsdf,Video,ste27,0

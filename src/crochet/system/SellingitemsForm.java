@@ -295,6 +295,11 @@ public class SellingitemsForm extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(rootPane,"Success! "+itemname+" is now available to purchase!");
                 
+                main.loadProducts();
+                main.loadAdviceItems();
+                main.setVisible(true);
+                this.dispose();
+                
             } catch (IOException ex) {
                 Logger.getLogger(SellingitemsForm.class.getName()).log(Level.SEVERE, null, ex);
             }

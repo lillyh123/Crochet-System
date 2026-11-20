@@ -171,7 +171,6 @@ public class NewAdviceForm extends javax.swing.JFrame {
        String title = Titletxt.getText();
        String content = Contenttxt.getText().replaceAll("\\n", "!newline!");
        String type = String.valueOf(AdviceTypeCombo.getSelectedItem());
-       System.out.println(content);
        String adviserusername = main.username;
         
        boolean validation = false;
@@ -202,6 +201,7 @@ public class NewAdviceForm extends javax.swing.JFrame {
                Contenttxt.setText(" ");
                
                JOptionPane.showMessageDialog(rootPane, "Success! Advice titled "+title+" saved!");
+               main.loadProducts();
                main.loadAdviceItems();
                main.setVisible(true);
                this.dispose();
