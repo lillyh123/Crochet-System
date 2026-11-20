@@ -8,6 +8,6 @@ package crochet.system;
  *
  * @author lbh20b
  */
-public record ProductsRecord(int id,String itemname, String description, float price, String sizeunit, String size, String type, int quantity, String seller) { //add image
+public record ProductsRecord(int id,String itemname, String description, float price, String sizeunit, String size, String type, int quantity, String seller, String rating) { //add image
 
 }

@@ -240,6 +240,7 @@ public class SellingitemsForm extends javax.swing.JFrame {
         String quantity = Quantitytxt.getText();
        
         String sellerusername = main.username;
+        String rating = main.rating;
         
         float numprice = 0;
         int numquantity = 0;
@@ -282,9 +283,9 @@ public class SellingitemsForm extends javax.swing.JFrame {
             int id = 0;
             try {
                 id = utils.getID("ProductID.txt");
-                String record = id+","+itemname+","+description+","+numprice+","+sizeunit+","+size+","+type+","+numquantity;
+                String record = id+","+itemname+","+description+","+numprice+","+sizeunit+","+size+","+type+","+numquantity+","+sellerusername+","+rating;
                 utils.writeToFile("Products.txt", record);
-                ProductsRecord p = new ProductsRecord(id,itemname,description,numprice,sizeunit,size,type,numquantity,sellerusername);
+                ProductsRecord p = new ProductsRecord(id,itemname,description,numprice,sizeunit,size,type,numquantity,sellerusername,rating);
                 Data.productMap.put(String.valueOf(id),p);
                 
                 ItemNametxt.setText("");

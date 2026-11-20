@@ -5,6 +5,12 @@
 package crochet.system;
 
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -97,7 +103,10 @@ public class ProductBoxPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImageButtonActionPerformed
-        ProductDetailsPanel productDetails = new ProductDetailsPanel();
+        ProductDetailsForm productDetails = new ProductDetailsForm();
+        FileReader fr;
+        //productDetails.setDetails(items[1], items[2], items[3], items[7],items[9], items[10], items[6]);
+        
         productDetails.setVisible(true);
     }//GEN-LAST:event_ImageButtonActionPerformed
 

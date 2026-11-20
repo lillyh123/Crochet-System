@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package crochet.system;
 
@@ -8,24 +8,15 @@ package crochet.system;
  *
  * @author lbh20b
  */
-public class ProductDetailsPanel extends javax.swing.JPanel {
+public class ProductDetailsForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form ProductDetailsPanel
+     * Creates new form ProductDetailsForm
      */
-    public ProductDetailsPanel() {
+    public ProductDetailsForm() {
         initComponents();
     }
-    
-    public void setData(String title, String price, String sellerusername, String sellerrating, String description, String category, String quantity){
-        TitleLabel.setText(title);
-        PriceLabel.setText(price);
-        SellerLabel.setText(sellerusername);
-        RatingLabel.setText(sellerrating);
-        DescriptionLabel.setText(description);
-        CategoryLabel.setText(category);
-        QuantityLabel.setText(quantity);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,47 +26,26 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        RatingLabel1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        TitleLabel = new javax.swing.JLabel();
-        PoundSign = new javax.swing.JLabel();
-        PriceLabel = new javax.swing.JLabel();
-        SellerLabel = new javax.swing.JLabel();
-        RatingLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         DescriptionLabel = new javax.swing.JLabel();
         QuantityLabel = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
         Label = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         SizeLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         UnitLabel = new javax.swing.JLabel();
+        TitleLabel = new javax.swing.JLabel();
         CategoryLabel = new javax.swing.JLabel();
+        PoundSign = new javax.swing.JLabel();
         AddToBasketButton = new javax.swing.JButton();
+        PriceLabel = new javax.swing.JLabel();
+        SellerLabel = new javax.swing.JLabel();
+        RatingLabel = new javax.swing.JLabel();
 
-        RatingLabel1.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        RatingLabel1.setText("Rating");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel1.setText("Viewing a product");
-
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        TitleLabel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        TitleLabel.setText("Title");
-
-        PoundSign.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        PoundSign.setText("£");
-
-        PriceLabel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        PriceLabel.setText("0.00");
-
-        SellerLabel.setFont(new java.awt.Font("Century Gothic", 2, 20)); // NOI18N
-        SellerLabel.setText("Seller username");
-
-        RatingLabel.setFont(new java.awt.Font("Century Gothic", 2, 15)); // NOI18N
-        RatingLabel.setText("Rating");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         DescriptionLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         DescriptionLabel.setText("Description");
@@ -93,17 +63,28 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
         Label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Label.setText("Size:");
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jLabel1.setText("Viewing a product");
+
         SizeLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         SizeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         SizeLabel.setText("0x0x0");
+
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         UnitLabel.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
         UnitLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         UnitLabel.setText("mm");
 
+        TitleLabel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        TitleLabel.setText("Title");
+
         CategoryLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         CategoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         CategoryLabel.setText("Category");
+
+        PoundSign.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        PoundSign.setText("£");
 
         AddToBasketButton.setBackground(new java.awt.Color(129, 244, 225));
         AddToBasketButton.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
@@ -114,27 +95,36 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        PriceLabel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        PriceLabel.setText("0.00");
+
+        SellerLabel.setFont(new java.awt.Font("Century Gothic", 2, 20)); // NOI18N
+        SellerLabel.setText("Seller username");
+
+        RatingLabel.setFont(new java.awt.Font("Century Gothic", 2, 15)); // NOI18N
+        RatingLabel.setText("Rating");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DescriptionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(Label2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(QuantityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(SellerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
@@ -143,9 +133,9 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
                                         .addComponent(PriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(RatingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CategoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(AddToBasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(SizeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,18 +144,19 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PoundSign)
-                            .addComponent(PriceLabel)
-                            .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(PoundSign)
+                                .addComponent(PriceLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SellerLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -173,11 +164,11 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(DescriptionLabel)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label2)
                             .addComponent(QuantityLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label)
                             .addComponent(SizeLabel)
                             .addComponent(UnitLabel))
@@ -186,14 +177,71 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(AddToBasketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+    public void setDetails(String title, String description, String price, String quantity, String seller, String rating, String category){
+        TitleLabel.setText(title);
+        DescriptionLabel.setText(description);
+        PriceLabel.setText(price);
+        QuantityLabel.setText(quantity);
+        SellerLabel.setText(seller);
+        RatingLabel.setText(rating);
+        CategoryLabel.setText(category);
+    }
+    
+    
     private void AddToBasketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToBasketButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AddToBasketButtonActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ProductDetailsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ProductDetailsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ProductDetailsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ProductDetailsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ProductDetailsForm().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddToBasketButton;
@@ -205,12 +253,12 @@ public class ProductDetailsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel PriceLabel;
     private javax.swing.JLabel QuantityLabel;
     private javax.swing.JLabel RatingLabel;
-    private javax.swing.JLabel RatingLabel1;
     private javax.swing.JLabel SellerLabel;
     private javax.swing.JLabel SizeLabel;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JLabel UnitLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

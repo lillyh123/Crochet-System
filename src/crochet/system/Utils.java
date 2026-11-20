@@ -94,4 +94,9 @@ public class Utils {
         return "";
     }
     
+    public int getSellerRating(String username){
+        return 0;
+    }
+    
+  
 }

@@ -1,1 +1,2 @@
-0,hat,crocheted hat,14.0,mm,120x20x30,Clothing,3
+0,hat,crocheted hat,14.0,mm,120x20x30,Clothing,3,ste27,8
+1,asdasd,asd,5.0,mm,4x6x2,Pattern,9,ste27,8

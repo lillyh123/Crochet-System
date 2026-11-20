@@ -5,7 +5,6 @@
 package crochet.system;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.BufferedReader;
@@ -31,6 +30,7 @@ public class MainMenu extends javax.swing.JFrame {
     public boolean admin;
     public String address;
     public String postcode;
+    public String rating;
     //ArrayList<String> labels = new ArrayList<String>();
     
     /**
@@ -72,6 +72,7 @@ public class MainMenu extends javax.swing.JFrame {
             admin = Boolean.parseBoolean(contents[9]);
             address = contents[6];
             postcode = contents[7];
+            rating = contents[10];
             //System.out.println(username+","+fullname+","+DOB+","+admin+","+address+","+postcode);
         }
         catch(IOException e){
