@@ -1,0 +1,4 @@
+0,asdasd,asdasdasd,Pattern,43,N/A,23/11/2026
+1,\zx\zx,\zx\zx\zx,Pattern,1,\zc,23/11/2026
+2,sasdasdasdasdas,asdaddaadad,Pattern,23,dasdasdasd,23/11/2026
+3,TESTTTTT,f,Clothing,8,N/A,23/11/2026

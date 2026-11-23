@@ -11,6 +11,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
 
@@ -122,6 +124,8 @@ public class MainMenu extends javax.swing.JFrame {
         ItemsForsSalePanel.revalidate();
         ItemsForsSalePanel.repaint();
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -767,6 +771,11 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void ProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileButtonActionPerformed
         ProfileMenu profilemenu = new ProfileMenu();
+        try {
+            profilemenu.loadProjects();
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         profilemenu.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_ProfileButtonActionPerformed
 

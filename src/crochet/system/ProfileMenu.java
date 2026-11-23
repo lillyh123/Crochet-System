@@ -40,6 +40,22 @@ public class ProfileMenu extends javax.swing.JFrame {
             }
     }
 
+    public void loadProjects() throws IOException{
+        AllProjectsPanel.removeAll();
+        int i = 0;
+        UserProjectsRecord retrieved;
+        while((retrieved=Data.projectsMap.get(String.valueOf(i)))!=null){
+            i++;
+            ProjectPanel projectItem = new ProjectPanel();
+            projectItem.setData(retrieved.title(), retrieved.description(), retrieved.dateStarted());
+            AllProjectsPanel.add(projectItem);
+        }
+        AllProjectsPanel.revalidate();
+        AllProjectsPanel.repaint();
+        ProjectsPanel.revalidate();
+        ProjectsPanel.repaint();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,8 +79,8 @@ public class ProfileMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         UsernameLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
+        ProjectsPanel = new javax.swing.JScrollPane();
+        AllProjectsPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         AddProjectButton = new javax.swing.JButton();
         ViewTransactionsButton = new javax.swing.JButton();
@@ -138,9 +154,9 @@ public class ProfileMenu extends javax.swing.JFrame {
         UsernameLabel1.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
         UsernameLabel1.setText("Projects");
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        ProjectsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ProjectsPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ProjectsPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -155,18 +171,18 @@ public class ProfileMenu extends javax.swing.JFrame {
             .addGap(0, 275, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout AllProjectsPanelLayout = new javax.swing.GroupLayout(AllProjectsPanel);
+        AllProjectsPanel.setLayout(AllProjectsPanelLayout);
+        AllProjectsPanelLayout.setHorizontalGroup(
+            AllProjectsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        AllProjectsPanelLayout.setVerticalGroup(
+            AllProjectsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(jPanel4);
+        ProjectsPanel.setViewportView(AllProjectsPanel);
 
         AddProjectButton.setBackground(new java.awt.Color(86, 203, 249));
         AddProjectButton.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
@@ -231,7 +247,7 @@ public class ProfileMenu extends javax.swing.JFrame {
                         .addComponent(UsernameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ProjectsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddProjectButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,7 +290,7 @@ public class ProfileMenu extends javax.swing.JFrame {
                 .addComponent(UsernameLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProjectsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(ViewTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -315,11 +331,13 @@ public class ProfileMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_SettingsButtonActionPerformed
 
     private void AddProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProjectButtonActionPerformed
-        // TODO add your handling code here:
+        CreateProjectForm newproject = new CreateProjectForm();
+        newproject.setVisible(true);
     }//GEN-LAST:event_AddProjectButtonActionPerformed
 
     private void ViewTransactionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionsButtonActionPerformed
-        // TODO add your handling code here:
+        ViewTransactionsForm transactions = new ViewTransactionsForm();
+        transactions.setVisible(true);
     }//GEN-LAST:event_ViewTransactionsButtonActionPerformed
 
     private void EditDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditDetailsButtonActionPerformed
@@ -361,6 +379,7 @@ public class ProfileMenu extends javax.swing.JFrame {
     private javax.swing.JLabel AddressLabel;
     private javax.swing.JLabel AdminLabel;
     private javax.swing.JButton AdminmenuButton;
+    private javax.swing.JPanel AllProjectsPanel;
     private javax.swing.JButton BasketButton;
     private javax.swing.JLabel DOBLabel;
     private javax.swing.JButton EditDetailsButton;
@@ -368,6 +387,7 @@ public class ProfileMenu extends javax.swing.JFrame {
     private javax.swing.JLabel FullnameLabel;
     private javax.swing.JButton HeadingButton;
     private javax.swing.JLabel PostcodeLabel;
+    private javax.swing.JScrollPane ProjectsPanel;
     private javax.swing.JButton SettingsButton;
     private javax.swing.JLabel UsernameLabel;
     private javax.swing.JLabel UsernameLabel1;
@@ -375,8 +395,6 @@ public class ProfileMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

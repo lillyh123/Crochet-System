@@ -18,9 +18,18 @@ public class CrochetSystem {
     public static void main(String[] args) throws IOException {
         MainMenu mainmenu = new MainMenu(0);
         Utils u1 = new Utils();
+        Data d1 = new Data();
+        
+        d1.projectsIntoRecords();
+        d1.productsIntoRecords();
+        d1.adviceIntoRecords();
+        
         mainmenu.setVisible(true);
         mainmenu.loadAdviceItems();
         mainmenu.loadProducts();
+        //mainmenu.loadProjects();
+        
+        
     }
     
 }

@@ -45,6 +45,30 @@ public class Utils {
         }
     }
     
+    public boolean typeCheck(String num, String datatype){
+        if(datatype.equals("Int")){
+            int number = 0;
+            try{
+                number = Integer.parseInt(num);
+                return true;
+            }
+            catch(NumberFormatException e){
+                return false;
+            }
+        }
+        else if(datatype.equals("Float")){
+            float number = 0;
+            try{
+                number = Float.parseFloat(num);
+                return true;
+            }
+            catch(NumberFormatException e){
+                return false;
+            }
+        }
+        return false;
+    }
+    
     public int getID(String filename) throws FileNotFoundException, IOException{
         try{
             FileReader fr = new FileReader(filename);
@@ -105,12 +129,6 @@ public class Utils {
             }
         }
         return count;
-    }
-    
-    public void editFileRecord(String filename, String recordId, String indexToChange) throws FileNotFoundException{
-        FileReader fr = new FileReader(filename);
-        BufferedReader br = new BufferedReader(fr);
-        //need to create a whole new file/overwrite entire file
     }
   
     public String getAllFileContent(String filename) throws FileNotFoundException, IOException{
