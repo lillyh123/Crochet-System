@@ -33,6 +33,7 @@ public class MainMenu extends javax.swing.JFrame {
     public String address;
     public String postcode;
     public String rating;
+   
     //ArrayList<String> labels = new ArrayList<String>();
     
     /**
@@ -43,7 +44,7 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         MenusTabs.setBackgroundAt(0, new Color(255,255,255));
         MenusTabs.setBackgroundAt(1, new Color(255,144,159)); //pink
-            MenusTabs.setBackgroundAt(2, new Color(129,244,225)); //green
+        MenusTabs.setBackgroundAt(2, new Color(129,244,225)); //green
         MenusTabs.setBackgroundAt(3, new Color(86,203,249)); //blue
         MenusTabs.setBackgroundAt(4, new Color(255,144,159));
         
@@ -138,6 +139,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
+        AdvicePanel1 = new javax.swing.JScrollPane();
+        AllAdvicePanel1 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         MenusTabs = new javax.swing.JTabbedPane();
         MainMenuTab = new javax.swing.JPanel();
@@ -189,6 +192,21 @@ public class MainMenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab1", jTabbedPane2);
 
+        AllAdvicePanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout AllAdvicePanel1Layout = new javax.swing.GroupLayout(AllAdvicePanel1);
+        AllAdvicePanel1.setLayout(AllAdvicePanel1Layout);
+        AllAdvicePanel1Layout.setHorizontalGroup(
+            AllAdvicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 986, Short.MAX_VALUE)
+        );
+        AllAdvicePanel1Layout.setVerticalGroup(
+            AllAdvicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 396, Short.MAX_VALUE)
+        );
+
+        AdvicePanel1.setViewportView(AllAdvicePanel1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -200,7 +218,7 @@ public class MainMenu extends javax.swing.JFrame {
         MainMenuTab.setBackground(new java.awt.Color(255, 255, 255));
 
         MainmenuSearchbar.setFont(new java.awt.Font("Century Gothic", 0, 25)); // NOI18N
-        MainmenuSearchbar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        MainmenuSearchbar.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         MainmenuSearchbar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MainmenuSearchbarActionPerformed(evt);
@@ -324,7 +342,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         UploadImageButton.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         UploadImageButton.setText("Upload image");
-        UploadImageButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        UploadImageButton.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         UploadImageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UploadImageButtonActionPerformed(evt);
@@ -487,18 +505,18 @@ public class MainMenu extends javax.swing.JFrame {
         AdviceTabLayout.setHorizontalGroup(
             AdviceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdviceTabLayout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
-                .addComponent(AdviceSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
-            .addGroup(AdviceTabLayout.createSequentialGroup()
+                .addGap(348, 348, 348)
+                .addComponent(AddAdviceButton)
+                .addContainerGap(409, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdviceTabLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(AdviceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AdviceTabLayout.createSequentialGroup()
-                        .addGap(348, 348, 348)
-                        .addComponent(AddAdviceButton))
-                    .addGroup(AdviceTabLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(AdvicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdviceTabLayout.createSequentialGroup()
+                        .addComponent(AdviceSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdviceTabLayout.createSequentialGroup()
+                        .addComponent(AdvicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         AdviceTabLayout.setVerticalGroup(
             AdviceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,9 +525,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(AdviceSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AddAdviceButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AdvicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         MenusTabs.addTab("Advice", AdviceTab);
@@ -770,8 +788,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_SettingsButtonActionPerformed
 
     private void ProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileButtonActionPerformed
-        ProfileMenu profilemenu = new ProfileMenu();
-        try {
+    ProfileMenu profilemenu = new ProfileMenu();
+       try {
             profilemenu.loadProjects();
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -894,9 +912,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel AdminLabel;
     private javax.swing.JButton AdminmenuButton;
     private javax.swing.JScrollPane AdvicePanel;
+    private javax.swing.JScrollPane AdvicePanel1;
     private javax.swing.JTextField AdviceSearchBar;
     private javax.swing.JPanel AdviceTab;
     private javax.swing.JPanel AllAdvicePanel;
+    private javax.swing.JPanel AllAdvicePanel1;
     private javax.swing.JPanel AllItemsPanel;
     private javax.swing.JPanel AllTutorialsPanel;
     private javax.swing.JButton BasketButton;

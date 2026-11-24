@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class CreateProjectForm extends javax.swing.JFrame {
     Utils u1 = new Utils();
+    ProfileMenu profile = new ProfileMenu();
     /**
      * Creates new form CreateProjectForm
      */
@@ -209,6 +210,11 @@ public class CreateProjectForm extends javax.swing.JFrame {
                     DescriptionTxt.setText("");
                     RowNumTxt.setText("");
                     PatternTxt.setText("");
+                    
+                    
+                    profile.loadProjects();
+                    profile.setVisible(true);
+                    this.dispose();
                     
                 } catch (IOException ex) {
                     Logger.getLogger(CreateProjectForm.class.getName()).log(Level.SEVERE, null, ex);

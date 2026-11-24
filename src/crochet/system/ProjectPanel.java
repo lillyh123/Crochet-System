@@ -4,6 +4,8 @@
  */
 package crochet.system;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author lbh20b
@@ -15,6 +17,7 @@ public class ProjectPanel extends javax.swing.JPanel {
      */
     public ProjectPanel() {
         initComponents();
+        this.setPreferredSize(new Dimension(440, 150));
     }
 
     public void setData(String title, String description, String startDate){
@@ -39,6 +42,7 @@ public class ProjectPanel extends javax.swing.JPanel {
         ProjectNametxt = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 15)); // NOI18N
         jLabel1.setText("Name");
@@ -67,7 +71,7 @@ public class ProjectPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -88,7 +92,7 @@ public class ProjectPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

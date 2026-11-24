@@ -143,7 +143,7 @@ public class NewTutorialForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
-        // TODO add your handling code here:
+        // validate, save to file + record, add to tutorials menu
     }//GEN-LAST:event_CreateButtonActionPerformed
 
     /**

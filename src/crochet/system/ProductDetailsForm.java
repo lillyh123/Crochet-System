@@ -4,6 +4,9 @@
  */
 package crochet.system;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -11,7 +14,8 @@ import javax.swing.JFrame;
  * @author lbh20b
  */
 public class ProductDetailsForm extends javax.swing.JFrame {
-
+    Utils u1 = new Utils();
+    int productId = 0;
     /**
      * Creates new form ProductDetailsForm
      */
@@ -190,7 +194,7 @@ public class ProductDetailsForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void setDetails(String title, String description, String price, String quantity, String seller, String rating, String category, String size, String unit){
+    public void setDetails(int id, String title, String description, String price, String quantity, String seller, String rating, String category, String size, String unit){
         TitleLabel.setText(title);
         DescriptionLabel.setText(description);
         PriceLabel.setText(price); 
@@ -199,11 +203,23 @@ public class ProductDetailsForm extends javax.swing.JFrame {
         RatingLabel.setText("Rating: "+rating+"/10");
         CategoryLabel.setText("Category: "+category);
         SizeLabel.setText(size+" "+unit);
+        productId = id;
     }
     
     
     private void AddToBasketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToBasketButtonActionPerformed
-        // TODO add your handling code here:
+        int basketItemId=0;
+        try {
+            basketItemId = u1.getID("BasketID.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(ProductDetailsForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String data = String.valueOf(basketItemId)+","+String.valueOf(productId);
+        try {
+            u1.writeToFile("Basket.txt", data);
+        } catch (IOException ex) {
+            Logger.getLogger(ProductDetailsForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AddToBasketButtonActionPerformed
 
     /**

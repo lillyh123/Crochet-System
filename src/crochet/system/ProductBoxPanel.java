@@ -115,7 +115,7 @@ public class ProductBoxPanel extends javax.swing.JPanel {
             while((line=br.readLine())!=null){
                 String items[] = line.split(",");
                 if(items[0].equals(id)){
-                    productDetails.setDetails(items[1], items[2], String.format("%.2f", Float.parseFloat(items[3])), items[7],items[8], items[9], items[6], items[5], items[4]);
+                    productDetails.setDetails(Integer.valueOf(items[0]),items[1], items[2], String.format("%.2f", Float.parseFloat(items[3])), items[7],items[8], items[9], items[6], items[5], items[4]);
                 }
             }
         } catch (FileNotFoundException ex) {
