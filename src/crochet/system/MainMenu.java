@@ -93,6 +93,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
     
     public void loadAdviceItems() throws FileNotFoundException, IOException{
+        //should read from a record instead
         AllAdvicePanel.removeAll();
         FileReader fr = new FileReader("Advice.txt");
         BufferedReader br = new BufferedReader(fr);
@@ -110,6 +111,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
     
     public void loadProducts() throws FileNotFoundException, IOException{
+        //should read from a record instead
         AllItemsPanel.removeAll();
         FileReader fr = new FileReader("Products.txt");
         BufferedReader br = new BufferedReader(fr);
@@ -779,6 +781,12 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void BasketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BasketButtonActionPerformed
         BasketMenu basketmenu = new BasketMenu();
+        try {
+            basketmenu.loadBasketItems();
+            System.out.println("HERE 2");
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         basketmenu.setVisible(true);
     }//GEN-LAST:event_BasketButtonActionPerformed
 

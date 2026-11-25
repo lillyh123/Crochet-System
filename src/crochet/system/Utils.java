@@ -141,4 +141,39 @@ public class Utils {
         }
         return content;
     }
+    
+    //https://codingtechroom.com/question/java-replace-line-in-text-file - for string builder 
+    
+    public void editFileContent(String filename, int id, String changedRow) throws FileNotFoundException, IOException{
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        StringBuilder newContent = new StringBuilder();
+        String line;
+        while((line=br.readLine())!=null){
+            String items[] = line.split(",");
+            if(Integer.parseInt(items[0])==id){
+                newContent.append(changedRow);
+            }
+            else{
+                newContent.append(line);
+            }
+            newContent.append(System.lineSeparator());  //new line
+        }
+        
+        FileWriter fw = new FileWriter(filename, false);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(newContent.toString());
+        bw.close();
+    }
+    
+    public String[] getProductRecordbyId(String searchid){
+        String result[] = null;
+        ProductsRecord retrieved = Data.productMap.get(searchid);
+        if(retrieved!=null){
+            //result =String.valueOf(retrieved.id())+","+String.valueOf(retrieved.itemname())+","+String.valueOf(retrieved.description())+","+String.valueOf(retrieved.price())+","+String.valueOf(retrieved.sizeunit())+","+String.valueOf(retrieved.size())+","+String.valueOf(retrieved.quantity())+","+String.valueOf(retrieved.seller())+","+String.valueOf(retrieved.rating());
+            
+        }
+        return result;
+        
+    }
 }

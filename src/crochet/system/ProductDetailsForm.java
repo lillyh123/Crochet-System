@@ -217,6 +217,8 @@ public class ProductDetailsForm extends javax.swing.JFrame {
         String data = String.valueOf(basketItemId)+","+String.valueOf(productId);
         try {
             u1.writeToFile("Basket.txt", data);
+            BasketRecord b = new BasketRecord(basketItemId, productId);
+            Data.basketMap.put(String.valueOf(basketItemId), b);
         } catch (IOException ex) {
             Logger.getLogger(ProductDetailsForm.class.getName()).log(Level.SEVERE, null, ex);
         }

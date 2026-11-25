@@ -4,14 +4,19 @@
  */
 package crochet.system;
 
+import java.awt.GridLayout;
+import java.io.IOException;
+import java.util.Arrays;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author hinks
  */
 public class BasketMenu extends javax.swing.JFrame {
-    
+    Utils u1 = new Utils();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BasketMenu.class.getName());
 
     /**
@@ -20,8 +25,32 @@ public class BasketMenu extends javax.swing.JFrame {
     public BasketMenu() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        BasketPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        AllBasketItemsPanel.setLayout(new BoxLayout(AllBasketItemsPanel, BoxLayout.Y_AXIS));
+        AllBasketItemsPanel.setLayout(new GridLayout(0, 3, 10, 10));
     }
-
+    
+    public void loadBasketItems() throws IOException{
+        AllBasketItemsPanel.removeAll();
+        int i = 0;
+        BasketRecord retrieved;
+        while((retrieved=Data.basketMap.get(String.valueOf(i)))!=null){
+            i++;
+            BasketItemPanel basketItem = new BasketItemPanel();
+            int basketItemId = retrieved.basketID();
+            //String record = u1.getProductRecordbyId(String.valueOf(basketItemId));
+            //String items[] = record.split(",");
+            
+            //System.out.println(items[1]+","+items[7]+","+items[3]+","+Integer.parseInt(items[0]));
+           // basketItem.setDetails(items[1], items[7], items[3], Integer.parseInt(items[0]));
+            System.out.print("HERE");
+            AllBasketItemsPanel.add(basketItem);
+        }
+        AllBasketItemsPanel.revalidate();
+        AllBasketItemsPanel.repaint();
+        BasketPanel.revalidate();
+        BasketPanel.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +62,15 @@ public class BasketMenu extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        BasketPanel = new javax.swing.JScrollPane();
+        AllBasketItemsPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        SubtotalLabel = new javax.swing.JLabel();
+        DeliveryLabel = new javax.swing.JLabel();
+        TotalLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,21 +79,95 @@ public class BasketMenu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
         jLabel2.setText("Basket");
 
+        BasketPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        AllBasketItemsPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout AllBasketItemsPanelLayout = new javax.swing.GroupLayout(AllBasketItemsPanel);
+        AllBasketItemsPanel.setLayout(AllBasketItemsPanelLayout);
+        AllBasketItemsPanelLayout.setHorizontalGroup(
+            AllBasketItemsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+        AllBasketItemsPanelLayout.setVerticalGroup(
+            AllBasketItemsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 287, Short.MAX_VALUE)
+        );
+
+        BasketPanel.setViewportView(AllBasketItemsPanel);
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel1.setText("Subtotal: £");
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel3.setText("Delivery: £");
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jLabel4.setText("Total (with delivery): £");
+
+        SubtotalLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        SubtotalLabel.setText("0.00");
+
+        DeliveryLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        DeliveryLabel.setText("0.00");
+
+        TotalLabel.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        TotalLabel.setText("0.00");
+
+        jButton1.setBackground(new java.awt.Color(129, 244, 225));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jButton1.setText("Checkout");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DeliveryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SubtotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BasketPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jButton1)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BasketPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(SubtotalLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(DeliveryLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(TotalLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -98,7 +210,16 @@ public class BasketMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AllBasketItemsPanel;
+    private javax.swing.JScrollPane BasketPanel;
+    private javax.swing.JLabel DeliveryLabel;
+    private javax.swing.JLabel SubtotalLabel;
+    private javax.swing.JLabel TotalLabel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

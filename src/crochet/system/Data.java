@@ -19,6 +19,7 @@ public class Data {
     public static Map<String, ProductsRecord> productMap = new HashMap();
     public static Map<String, AdviceRecord> adviceMap = new HashMap();
     public static Map<String, UserProjectsRecord> projectsMap = new HashMap();
+    public static Map<String, BasketRecord> basketMap = new HashMap();
     
     public void projectsIntoRecords() throws FileNotFoundException, IOException{
         FileReader fr = new FileReader("UserProjects.txt");
@@ -80,6 +81,19 @@ public class Data {
         }
     }
     
+    public void basketItemsIntoRecords() throws FileNotFoundException, IOException{
+        FileReader fr = new FileReader("basket.txt");
+        BufferedReader br = new BufferedReader(fr);
+        String line;
+        while((line=br.readLine())!=null){
+            String items[] = line.split(",");
+            int basketid = Integer.parseInt(items[0]);
+            int productid = Integer.parseInt(items[1]);
+            
+            BasketRecord b = new BasketRecord(basketid,productid);
+            Data.basketMap.put(String.valueOf(basketid), b);
+        }
+    }
 
     
 }
